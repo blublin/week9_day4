@@ -46,8 +46,7 @@ const expected1 = [
 
 function flattenObjectOfArrays(obj) {
     const retArr = [];
-    // Object is key: array of objs
-    for (const [_, v] of Object.entries(obj)) {
+    for (let v of Object.values(obj)) {
         console.log(v)
         if (v) {
             v.forEach(element => {
@@ -56,14 +55,6 @@ function flattenObjectOfArrays(obj) {
             });
         }
     }
-    // for (let key in obj) {
-    //     if (obj[key].length > 0) {
-    //         obj[key].forEach(element => {
-    //             let {id, type} = element
-    //             retArr.push( {id, type})
-    //         });
-    //     }
-    // }
     return retArr
 }
 

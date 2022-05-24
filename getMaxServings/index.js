@@ -59,22 +59,25 @@ const expected3 = 0; // broccoli seeds key doesn't exist in available ingredient
  * @param {Ingredients} available
  * @returns {number} Max servings of the recipe that can be made.
  */
+
+const debug = true;
+
 function getMaxServings(recipe, available) {
     let lCD;
     for (let ingredient in recipe) {
-        console.log("ingredient:", ingredient)
+        debug && console.log("ingredient:", ingredient)
         if (!available[ingredient]) return `\n${ingredient} not in available ingredients.\nMax Servings is 0.`;
-        console.log(ingredient, "is in available ingredients.")
+        debug && console.log(ingredient, "is in available ingredients.")
         let ingredientRatio = Math.floor(available[ingredient] / recipe[ingredient])
-        console.log("Ingredient ratio:", ingredientRatio)
+        debug && console.log("Ingredient ratio:", ingredientRatio)
         if (lCD) {
             if (ingredientRatio < lCD) {
-                console.log("IR was lower than LCD")
+        debug && console.log("IR was lower than LCD")
                 lCD = ingredientRatio
             }
         }
         else {
-            console.log("LCD did not exist. LCD set to", ingredient)
+        debug && console.log("LCD did not exist. LCD set to", ingredient)
             lCD = ingredientRatio;
         }
     }
@@ -84,3 +87,7 @@ function getMaxServings(recipe, available) {
 console.log(getMaxServings(recipe1, available1))
 console.log(getMaxServings(recipe1, available2))
 console.log(getMaxServings(recipe1, available3))
+
+
+// THIS MUST BE TRUE && FOR THIS TO EXECUTE
+// IF THIS IS FALSE || THIS CAN STILL EXECUTE
